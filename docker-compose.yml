@@ -15,4 +15,4 @@ services:
       - "${PGPORT}:${PGPORT}"
     environment:
       POSTGRES_PASSWORD: "${PGPASSWORD}"
-    # env_file: .env
+    env_file: .env
