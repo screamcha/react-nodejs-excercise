@@ -24,6 +24,7 @@
   },
   "scripts": {
     "start:dev": "NODE_ENV=development nodemon src/index.js",
+    "start:prod": "NODE_ENV=production yarn db:reset && node src/index.js",
     "db:migrate:up": "knex migrate:latest",
     "db:reset": "knex migrate:rollback --all && knex migrate:latest && knex seed:run",
     "db:migrate:rollback": "db:migrate:rollback"

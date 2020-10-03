@@ -1,10 +1,11 @@
-require('dotenv').config()
-
+const path = require('path')
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const { StatusCodes } = require('http-status-codes')
 
 const router = require('./routes')
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
 const app = new Koa()
 
@@ -14,7 +15,8 @@ app.use(async (ctx, next) => {
   try {
     await next()
   } catch (error) {
-    ctx.response.status = error.code || StatusCodes.INTERNAL_SERVER_ERROR
+    console.error(error)
+    ctx.response.status = StatusCodes.INTERNAL_SERVER_ERROR
   }
 })
 
