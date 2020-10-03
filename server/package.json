@@ -4,10 +4,12 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "http-status-codes": "^2.1.4",
     "knex": "^0.21.6",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^9.4.0",
+    "koa-socket-2": "^1.2.0",
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3"
   },
@@ -21,7 +23,7 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start:dev": "NODE_ENV=development nodemon src/app.js",
+    "start:dev": "NODE_ENV=development nodemon src/index.js",
     "db:migrate:up": "knex migrate:latest",
     "db:reset": "knex migrate:rollback --all && knex migrate:latest && knex seed:run",
     "db:migrate:rollback": "db:migrate:rollback"
