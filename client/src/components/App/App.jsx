@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import ItemsService from '../../services/ItemsService'
 
 const App = () => {
-  console.log(process.env.API_URL)
+  useEffect(() => {
+    ItemsService.getItems().then(res => console.log(res))
+  })
+
   return (
     <header>this is header</header>
   )
