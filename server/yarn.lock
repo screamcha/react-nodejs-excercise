@@ -1938,14 +1938,6 @@ koa-router@^9.4.0:
     methods "^1.1.2"
     path-to-regexp "^6.1.0"
 
-koa-socket-2@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/koa-socket-2/-/koa-socket-2-1.2.0.tgz#b52cce45096adc3284b26cd6c5f7f078b7efd46b"
-  integrity sha512-uv0MImrccpT3p9mpBtM+Jw4syBJ+EhkARI62ERvyXVQKJNdRW5OFwqRrb/DkxXAj6W/8tfGYb9rEwvkmp1efbg==
-  dependencies:
-    koa-compose "^4.1.0"
-    socket.io "^2.2.0"
-
 koa@^2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/koa/-/koa-2.13.0.tgz#25217e05efd3358a7e5ddec00f0a380c9b71b501"
@@ -2916,7 +2908,7 @@ socket.io-parser@~3.4.0:
     debug "~4.1.0"
     isarray "2.0.1"
 
-socket.io@^2.2.0:
+socket.io@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/socket.io/-/socket.io-2.3.0.tgz#cd762ed6a4faeca59bc1f3e243c0969311eb73fb"
   integrity sha512-2A892lrj0GcgR/9Qk81EaY2gYhCBxurV0PfmmESO6p27QPrUK1J3zdns+5QPqvUYK2q657nSj0guoIil9+7eFg==
