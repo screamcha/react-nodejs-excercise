@@ -5,6 +5,7 @@ export const AppContext = React.createContext()
 
 const AppContextProvider = ({ children }) => {
   const [items, setItems] = React.useState([])
+  const [cartItemsCount, setCartItemsCount] = React.useState(0)
 
   const loadItems = async () => {
     const res = await ItemsService.getItems()
@@ -17,7 +18,9 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{
-      items
+      items,
+      cartItemsCount,
+      setCartItemsCount
     }}>
       {children}
     </AppContext.Provider>
