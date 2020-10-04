@@ -5,7 +5,8 @@ export const AppContext = React.createContext()
 
 const AppContextProvider = ({ children }) => {
   const [items, setItems] = React.useState([])
-  const [cartItemsCount, setCartItemsCount] = React.useState(0)
+  const [cartItems, setCartItems] = React.useState([])
+  const [activeModalName, setActiveModalName] = React.useState('')
 
   const loadItems = async () => {
     const res = await ItemsService.getItems()
@@ -19,8 +20,9 @@ const AppContextProvider = ({ children }) => {
   return (
     <AppContext.Provider value={{
       items,
-      cartItemsCount,
-      setCartItemsCount
+      cartItems,
+      setCartItems,
+      setActiveModalName
     }}>
       {children}
     </AppContext.Provider>

@@ -18,6 +18,8 @@ module.exports = {
     'react'
   ],
   rules: {
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    quotes: ['error', 'single'],
+    'jsx-quotes': ['error', 'prefer-single']
   }
 }
