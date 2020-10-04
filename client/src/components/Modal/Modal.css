@@ -1,0 +1,25 @@
+.custom-modal-container {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+}
+
+.custom-modal {
+  height: 40%;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+
+}
+
+@media (max-width: 767.98px) { 
+  .custom-modal {
+    height: 100%;
+    width: 100%;
+  }
+}
