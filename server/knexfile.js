@@ -1,5 +1,6 @@
-const path = require('path')
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
 
 module.exports = {
   client: 'pg',
@@ -8,7 +9,7 @@ module.exports = {
     host: process.env.PGHOST,
     user: process.env.PGUSER,
     password: process.env.PGPASSWORD,
-    port: process.env.PGPORT
+    port: 5432
   },
   migrations: {
     directory: './src/db/migrations'

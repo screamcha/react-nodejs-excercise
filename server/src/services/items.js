@@ -8,6 +8,12 @@ const getItems = async () => {
   return items
 }
 
+const getItem = async (itemId) => {
+  const item = await itemsAccessor.getItemById(itemId)
+
+  return item
+}
+
 const updateItem = async (itemId, quantity) => {
   const item = await itemsAccessor.getItemById(itemId)
 
@@ -22,5 +28,6 @@ const updateItem = async (itemId, quantity) => {
 
 module.exports = {
   getItems,
+  getItem,
   updateItem
 }

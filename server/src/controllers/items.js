@@ -8,6 +8,19 @@ const getItems = async (ctx) => {
   ctx.body = items
 }
 
+const getItem = async (ctx) => {
+  const { id: itemId } = ctx.request.params
+
+  const item = await itemsService.getItem(itemId)
+
+  if (!item) {
+    ctx.response.status = StatusCodes.NOT_FOUND
+    return
+  }
+
+  ctx.body = item
+}
+
 const updateItem = async (ctx) => {
   const { id: itemId } = ctx.request.params
   const { quantity } = ctx.request.body
@@ -29,5 +42,6 @@ const updateItem = async (ctx) => {
 
 module.exports = {
   getItems,
+  getItem,
   updateItem
 }

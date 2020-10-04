@@ -1,11 +1,12 @@
-const path = require('path')
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const { StatusCodes } = require('http-status-codes')
 
 const router = require('./routes')
 
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
 
 const app = new Koa()
 

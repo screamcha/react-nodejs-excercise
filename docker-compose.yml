@@ -12,7 +12,8 @@ services:
     image: "postgres:13"
     container_name: "excercise_db"
     ports:
-      - "${PGPORT}:${PGPORT}"
+      - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: "${PGPASSWORD}"
-    env_file: .env
+      - POSTGRES_PASSWORD=${PGPASSWORD}
+      - POSTGRES_USER=${PGUSER}
+      - POSTGRES_DB=${PGDATABASE}
