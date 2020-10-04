@@ -1,0 +1,9 @@
+.item {
+  cursor: pointer;
+}
+
+.item-quantity {
+  display: inline-block;
+  text-align: center;
+  width: 2.5rem;
+}

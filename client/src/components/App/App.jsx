@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
-import ItemsService from '../../services/ItemsService'
+import React from 'react'
+import AppContextProvider from '../../context/AppContext'
+import ItemList from '../ItemList'
 
 const App = () => {
-  useEffect(() => {
-    ItemsService.getItems().then(res => console.log(res))
-  })
-
   return (
-    <header>this is header</header>
+    <AppContextProvider>
+      <header>this is header</header>
+      <ItemList className='mt-5' />
+    </AppContextProvider>
   )
 }
 
