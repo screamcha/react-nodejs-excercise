@@ -10,6 +10,18 @@ class Api {
 
     return res.json()
   }
+
+  async patch (url, body) {
+    const res = await fetch(`${this.apiUrl}${url}`, {
+      method: 'PATCH',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    return res.json()
+  }
 }
 
 const api = new Api()

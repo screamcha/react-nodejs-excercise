@@ -34,26 +34,40 @@ const AppContextProvider = ({ children }) => {
     return cartItems[item.id] || 0
   }
 
-  const addItemToCart = (item) => {
+  const addItemToCart = async (item) => {
     const currentItemCount = countItemInCart(item)
 
+    const updatedItem = await ItemsService.updateItem(
+      item.id, {
+        quantity: item.quantity - 1
+      })
+
+    setSelectedItem(updatedItem)
     setCartItems({
       ...cartItems,
       [item.id]: currentItemCount + 1
     })
+    loadItems()
   }
 
-  const removeItemFromCart = (item) => {
+  const removeItemFromCart = async (item) => {
     const currentItemCount = countItemInCart(item)
 
     if (currentItemCount === 0) {
       return
     }
 
+    const updatedItem = await ItemsService.updateItem(
+      item.id, {
+        quantity: item.quantity + 1
+      })
+
+    setSelectedItem(updatedItem)
     setCartItems({
       ...cartItems,
       [item.id]: currentItemCount - 1
     })
+    loadItems()
   }
 
   const openModal = (name) => setActiveModalName(name)

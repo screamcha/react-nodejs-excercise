@@ -25,7 +25,7 @@ const updateItem = async (ctx) => {
   const { id: itemId } = ctx.request.params
   const { quantity } = ctx.request.body
 
-  if (!quantity) {
+  if (quantity === undefined) {
     ctx.response.status = StatusCodes.BAD_REQUEST
     return
   }

@@ -5,7 +5,9 @@ const IO = require('socket.io')
 // })
 
 module.exports = (server) => {
-  const socket = IO(server)
+  const socket = IO(server, {
+    path: '/socket'
+  })
 
   socket.on('connection', socket => {
     console.log('hi')

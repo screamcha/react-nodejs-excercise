@@ -6,6 +6,7 @@ const getItemById = async (id) => {
     .where('items.id', id)
     .join('quantities', 'quantities.item_id', '=', 'items.id')
     .select('*')
+    .orderBy('id', 'asc')
 
   if (item[0]) {
     return new ItemModel(item[0])
