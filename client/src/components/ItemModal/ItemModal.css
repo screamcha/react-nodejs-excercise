@@ -1,0 +1,55 @@
+.item-modal .custom-modal-content {
+  align-items: center;
+  display: grid;
+  gap: .5rem 1rem;
+  grid-template-areas:
+    'id name info'
+    '. description buttons';
+  grid-template-columns: 1fr 12fr 4fr;
+}
+
+.item-modal__id {
+  grid-area: id;
+  justify-self: end;
+}
+
+.item-modal__name {
+  grid-area: name;
+}
+
+.item-modal__info {
+  grid-area: info;
+}
+
+.item-modal__quantity {
+  text-align: center;
+  width: 2.5rem;
+}
+
+.item-modal__description {
+  grid-area: description;
+}
+
+.item-modal__buttons {
+  grid-area: buttons;
+  height: 100%;
+}
+
+.item-modal__in-cart {
+  font-size: .8rem;
+}
+
+@media (max-width: 575.98px) {
+  .item-modal .custom-modal-content {
+    grid-template-areas:
+    'id name'
+    '. description'
+    'info buttons';
+    grid-template-columns: 2fr 16fr;
+  }
+
+  .item-modal__buttons {
+    align-items: center;
+    gap: .5rem;
+  }
+}

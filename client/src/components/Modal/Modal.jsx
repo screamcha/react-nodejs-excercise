@@ -14,7 +14,7 @@ const Modal = ({ children, isActive, className }) => {
 
   return ReactDOM.createPortal(
     <div className='custom-modal-container'>
-      <section className={cn('custom-modal bg-white p-3 border-md border-dark rounded-md', className)}>
+      <section className={cn('custom-modal bg-white p-3 border-md border-dark rounded', className)}>
         <div className='custom-modal-header d-flex justify-content-end'>
           <button onClick={closeModal} type='button' className='close'>
             <span>&times;</span>

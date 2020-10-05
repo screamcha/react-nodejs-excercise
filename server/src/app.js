@@ -1,4 +1,5 @@
 const Koa = require('koa')
+const cors = require('@koa/cors')
 const bodyParser = require('koa-bodyparser')
 const { StatusCodes } = require('http-status-codes')
 
@@ -10,6 +11,9 @@ if (process.env.NODE_ENV === 'development') {
 
 const app = new Koa()
 
+app.use(cors({
+  origin: process.env.CLIENT_URL
+}))
 app.use(bodyParser())
 
 app.use(async (ctx, next) => {

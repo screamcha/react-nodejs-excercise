@@ -4,11 +4,11 @@ import { AppContext } from '../../context/AppContext'
 import './Header.css'
 
 const Header = () => {
-  const { cartItemsCount } = React.useContext(AppContext)
+  const { cartItemsNumber } = React.useContext(AppContext)
 
   const itemNoun = React.useMemo(
-    () => cartItemsCount === 1 ? 'item' : 'items',
-    [cartItemsCount]
+    () => cartItemsNumber === 1 ? 'item' : 'items',
+    [cartItemsNumber]
   )
 
   return (
@@ -18,7 +18,7 @@ const Header = () => {
       </h3>
       <aside>
         <span className='d-none d-sm-inline-block mr-2'>Total in cart:</span>
-        <span className='cart-items border border-dark px-1 px-sm-3 py-1'>{cartItemsCount} {itemNoun}</span>
+        <span className='cart-items border border-dark px-1 px-sm-3 py-1'>{cartItemsNumber} {itemNoun}</span>
       </aside>
     </header>
   )

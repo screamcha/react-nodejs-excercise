@@ -9,6 +9,11 @@ const AppContextProvider = ({ children }) => {
   const [activeModalName, setActiveModalName] = React.useState('')
   const [selectedItem, setSelectedItem] = React.useState({})
 
+  const cartItemsNumber = React.useMemo(() =>
+    Object.values(cartItems)
+      .reduce((res, next) => res + next, 0)
+  , [cartItems])
+
   const loadItems = async () => {
     const res = await ItemsService.getItems()
     setItems(res)
@@ -16,15 +21,21 @@ const AppContextProvider = ({ children }) => {
 
   React.useEffect(() => {
     loadItems()
-  })
+  }, [])
 
-  const selectItem = (item) => {
-    setSelectedItem(item)
+  const selectItem = async (item) => {
     openModal('ItemModal')
+
+    const fullItem = await ItemsService.getItem(item.id)
+    setSelectedItem(fullItem)
+  }
+
+  const countItemInCart = (item) => {
+    return cartItems[item.id] || 0
   }
 
   const addItemToCart = (item) => {
-    const currentItemCount = cartItems[item.id] || 0
+    const currentItemCount = countItemInCart(item)
 
     setCartItems({
       ...cartItems,
@@ -33,7 +44,7 @@ const AppContextProvider = ({ children }) => {
   }
 
   const removeItemFromCart = (item) => {
-    const currentItemCount = cartItems[item.id] || 0
+    const currentItemCount = countItemInCart(item)
 
     if (currentItemCount === 0) {
       return
@@ -58,7 +69,9 @@ const AppContextProvider = ({ children }) => {
       closeModal,
       selectItem,
       addItemToCart,
-      removeItemFromCart
+      removeItemFromCart,
+      countItemInCart,
+      cartItemsNumber
     }}>
       {children}
     </AppContext.Provider>
