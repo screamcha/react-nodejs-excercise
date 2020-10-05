@@ -3,6 +3,7 @@ import AppContextProvider from '../../context/AppContext'
 import Header from '../Header'
 import ItemList from '../ItemList'
 import ItemModal from '../ItemModal'
+import ItemChangeModal from '../ItemChangeModal'
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <ItemList className='mt-5' />
 
       <ItemModal />
+      <ItemChangeModal />
     </AppContextProvider>
   )
 }

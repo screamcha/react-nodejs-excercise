@@ -1,12 +1,15 @@
 import React from 'react'
 import ItemsService from '../services/ItemsService'
+import SocketService from '../services/SocketService'
 
 export const AppContext = React.createContext()
+
+const socket = new SocketService()
 
 const AppContextProvider = ({ children }) => {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState({})
-  const [activeModalName, setActiveModalName] = React.useState('')
+  const [activeModal, setActiveModal] = React.useState('')
   const [selectedItem, setSelectedItem] = React.useState({})
 
   const cartItemsNumber = React.useMemo(() =>
@@ -21,6 +24,14 @@ const AppContextProvider = ({ children }) => {
 
   React.useEffect(() => {
     loadItems()
+  }, [])
+
+  React.useEffect(() => {
+    const handler = (data) => {
+      loadItems()
+      openModal('ItemChangeModal', data)
+    }
+    socket.onItemChange(handler)
   }, [])
 
   const selectItem = async (item) => {
@@ -48,6 +59,7 @@ const AppContextProvider = ({ children }) => {
       [item.id]: currentItemCount + 1
     })
     loadItems()
+    socket.notifyChange(item, -1)
   }
 
   const removeItemFromCart = async (item) => {
@@ -68,17 +80,18 @@ const AppContextProvider = ({ children }) => {
       [item.id]: currentItemCount - 1
     })
     loadItems()
+    socket.notifyChange(item, 1)
   }
 
-  const openModal = (name) => setActiveModalName(name)
-  const closeModal = () => setActiveModalName('')
+  const openModal = (name, data = {}) => setActiveModal({ name, ...data })
+  const closeModal = () => setActiveModal({})
 
   return (
     <AppContext.Provider value={{
       items,
       cartItems,
       selectedItem,
-      activeModalName,
+      activeModal,
       openModal,
       closeModal,
       selectItem,

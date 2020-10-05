@@ -1,15 +1,15 @@
 const IO = require('socket.io')
 
-// io.on('message', (ctx, data) => {
-//   console.log(data)
-// })
-
 module.exports = (server) => {
-  const socket = IO(server, {
+  const io = IO(server, {
     path: '/socket'
   })
 
-  socket.on('connection', socket => {
-    console.log('hi')
+  io.on('connection', (socket) => {
+    console.log(`${socket.id} is connected`)
+
+    socket.on('item_change', (data) => {
+      socket.broadcast.emit('item_changed', data)
+    })
   })
 }

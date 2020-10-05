@@ -7,7 +7,7 @@ import './ItemModal.css'
 const ItemModal = () => {
   const {
     selectedItem,
-    activeModalName,
+    activeModal,
     closeModal,
     addItemToCart,
     removeItemFromCart,
@@ -17,7 +17,7 @@ const ItemModal = () => {
   const itemInCart = countItemInCart(selectedItem)
 
   return (
-    <Modal className='item-modal' isActive={activeModalName === 'ItemModal'}>
+    <Modal className='item-modal' isActive={activeModal.name === 'ItemModal'}>
       <span className='item-modal__id'>{selectedItem.id}</span>
       <h4 className='item-modal__name'>{selectedItem.name}</h4>
       <div className='item-modal__info d-flex justify-content-between flex-column flex-sm-row align-items-center'>

@@ -6,7 +6,6 @@ const getItemById = async (id) => {
     .where('items.id', id)
     .join('quantities', 'quantities.item_id', '=', 'items.id')
     .select('*')
-    .orderBy('id', 'asc')
 
   if (item[0]) {
     return new ItemModel(item[0])
@@ -17,6 +16,7 @@ const getItems = async () => {
   const data = await db.select('items.id', 'name', 'quantity')
     .from('items')
     .join('quantities', 'quantities.item_id', '=', 'items.id')
+    .orderBy('items.id', 'asc')
 
   return data.map((item) => new ItemModel(item))
 }
