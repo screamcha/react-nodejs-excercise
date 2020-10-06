@@ -3,6 +3,7 @@ const cors = require('@koa/cors')
 const bodyParser = require('koa-bodyparser')
 const { StatusCodes } = require('http-status-codes')
 
+const passport = require('./passport')
 const router = require('./routes')
 
 if (process.env.NODE_ENV === 'development') {
@@ -16,6 +17,7 @@ app.use(cors({
   // credentials: true
 }))
 app.use(bodyParser())
+app.use(passport.initialize())
 
 app.use(async (ctx, next) => {
   try {
