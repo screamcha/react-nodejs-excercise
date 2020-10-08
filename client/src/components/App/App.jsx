@@ -8,6 +8,7 @@ import ItemModal from '../ItemModal'
 import ItemChangeModal from '../ItemChangeModal'
 
 const App = () => {
+  console.log(process.env.KEK)
   return (
     <AppContextProvider>
 

@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DotenvPlugin = require('dotenv-webpack')
 
 const env = process.env.NODE_ENV || 'development'
+const envPath = env === 'development' ? '.env' : '../.env'
 
 module.exports = {
   mode: env,
@@ -40,7 +41,10 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new DotenvPlugin(),
+    new DotenvPlugin({
+      path: envPath,
+      systemvars: true
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html')
     })
