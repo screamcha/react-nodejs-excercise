@@ -22,7 +22,7 @@ const options = {
 module.exports = (passport) => {
   passport.use(new Strategy(options, async (payload, done) => {
     try {
-      const user = await usersAccessor.getUserById(payload)
+      const user = await usersAccessor.getUserById(payload.id)
 
       if (!user) {
         return done(false)

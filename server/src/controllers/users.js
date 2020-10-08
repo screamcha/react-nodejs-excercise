@@ -18,7 +18,7 @@ const login = async (ctx) => {
     return
   }
 
-  ctx.cookies.set(AUTH_COOKIE_NAME, jwt, { domain: process.env.CLIENT_URL })
+  ctx.cookies.set(AUTH_COOKIE_NAME, jwt)
   ctx.status = StatusCodes.OK
 }
 

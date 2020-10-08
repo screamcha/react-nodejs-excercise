@@ -13,8 +13,8 @@ if (process.env.NODE_ENV === 'development') {
 const app = new Koa()
 
 app.use(cors({
-  origin: process.env.CLIENT_URL
-  // credentials: true
+  origin: process.env.CLIENT_URL,
+  credentials: true
 }))
 app.use(bodyParser())
 app.use(passport.initialize())
